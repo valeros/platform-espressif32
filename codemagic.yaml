@@ -6,4 +6,13 @@ workflows:
         - push
     name: Hello world workflow
     scripts:
-        - python -c "print('Hello world')"
+      - name: Check Python
+        script: python --version
+      - name: Show current contect
+        script: ls -al
+      - name: Install dependencies
+        script: |
+          pip install -U https://github.com/platformio/platformio/archive/develop.zip
+          pio pkg install --global --platform symlink://.
+      - name: Run example
+        script: pio run -d examples/espidf-http-request
