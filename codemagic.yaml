@@ -1,0 +1,9 @@
+workflows:
+  hello-world:
+    instance_type: mac_mini_m1
+    triggering:
+      events:
+        - push
+    name: Hello world workflow
+    scripts:
+        - python -c "print('Hello world')"
