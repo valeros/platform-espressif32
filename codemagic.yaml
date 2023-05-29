@@ -8,6 +8,8 @@ workflows:
     scripts:
       - name: Check Python
         script: python --version
+      - name: Update PIP
+        script: python -m pip install -U pip
       - name: Show current contect
         script: ls -al
       - name: Install dependencies
