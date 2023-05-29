@@ -1,6 +1,9 @@
 workflows:
   hello-world:
     instance_type: mac_mini_m1
+    cache:
+      cache_paths:
+        - $HOME/.platformio/.cache
     triggering:
       events:
         - push
@@ -15,6 +18,6 @@ workflows:
       - name: Install dependencies
         script: |
           pip install -U https://github.com/platformio/platformio/archive/develop.zip
-          pio pkg install --global --platform symlink://.
+          pio pkg install --skip-dependencies --global --platform symlink://.
       - name: Run example
         script: pio run -d examples/espidf-http-request
