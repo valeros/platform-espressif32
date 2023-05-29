@@ -1104,6 +1104,19 @@ def install_python_deps():
         "idf-component-manager": "~=1.0",
     }
 
+    pip_output = subprocess.check_output(
+        [
+            get_python_exe(),
+            "-m",
+            "pip",
+            "install",
+            "-U",
+            "pip",
+        ]
+    )
+
+    print("** PIP update output", pip_output)
+
     if IDF5:
         # Remove specific versions for IDF5 as not required
         deps = {dep: "" for dep in deps}
